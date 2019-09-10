@@ -1,7 +1,8 @@
 package blockchain
 
 import (
-	"fmt"
+    "bytes"
+    "fmt"
 	"crypto/sha256"
 )
 
@@ -12,7 +13,7 @@ type Block struct {
 }
 
 type BlockChain struct{
-    blocks []*Block
+    Blocks []*Block
 }
 
 func getHash(b *Block){
@@ -33,7 +34,7 @@ func InitBlockChain(s string) *BlockChain {
 }
 
 func AddBlock( bc *BlockChain, s string){
-    prevBlock := bc.blocks[len(bc.blocks)-1]
+    prevBlock := bc.Blocks[len(bc.Blocks)-1]
     new := CreateBlock (s,prevBlock.Hash)
-    bc.blocks = append (bc.blocks, new)
+    bc.Blocks = append (bc.Blocks, new)
 }
